@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Form, Collapse } from 'react-bootstrap';
-
+  import defaultLoops from './negative_loop_all_15.json';
 const defaultTemplate = {
   name: '',
   behavior: '',
@@ -14,7 +14,9 @@ const defaultTemplate = {
 };
 
 function App() {
-  const [loops, setLoops] = useState([]);
+
+
+const [loops, setLoops] = useState(defaultLoops);
   const [showModal, setShowModal] = useState(false);
   const [currentLoop, setCurrentLoop] = useState(defaultTemplate);
   const [editIndex, setEditIndex] = useState(null);

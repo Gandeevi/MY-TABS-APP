@@ -1,0 +1,137 @@
+[
+  {
+    "name": "People-Pleasing",
+    "behavior": "I say yes when I mean no. I don't express disagreement. I pretend I'm okay when I'm not.",
+    "innerVoice": "They'll be upset with me. I don't want to look selfish. I need their approval.",
+    "cost": "My self-respect, emotional exhaustion, time for myself, authenticity in relationships.",
+    "origin": "My childhood taught me to avoid conflict. I had to be 'the nice one' to stay safe.",
+    "desire": "I want to express my needs calmly. I want to feel safe saying no.",
+    "mantra": "Saying no doesn\u2019t make me bad. It makes me honest."
+  },
+  {
+    "name": "Overthinking",
+    "behavior": "I delay action by obsessing over details. I replay past and future scenarios endlessly.",
+    "innerVoice": "What if I choose wrong? I must be 100% sure before I act.",
+    "cost": "Wasted time, decision paralysis, stress, lost opportunities.",
+    "origin": "I was punished or judged for mistakes, so I trained myself to overanalyze everything.",
+    "desire": "I want to trust my gut and take steps even when uncertain.",
+    "mantra": "Done is better than perfect."
+  },
+  {
+    "name": "Procrastination",
+    "behavior": "I avoid important tasks by distracting myself. I wait until the pressure forces me.",
+    "innerVoice": "I\u2019ll do it later. I\u2019m not ready yet. It\u2019s too much right now.",
+    "cost": "Anxiety, last-minute stress, missed potential, self-doubt.",
+    "origin": "I used avoidance as a survival tactic. I feared failure more than delay.",
+    "desire": "I want to act consistently without fear.",
+    "mantra": "Start small. Begin now."
+  },
+  {
+    "name": "Fear of Visibility",
+    "behavior": "I hide my work, voice, or presence even when I know I have value.",
+    "innerVoice": "What if they reject me? What if I embarrass myself?",
+    "cost": "Lost recognition, unshared gifts, low self-trust.",
+    "origin": "I was judged when I stood out. I learned it\u2019s safer to shrink.",
+    "desire": "I want to show up as I am \u2014 fully and freely.",
+    "mantra": "I deserve to be seen and heard."
+  },
+  {
+    "name": "Numbing with Distraction",
+    "behavior": "I scroll, binge, or eat to avoid uncomfortable feelings or silence.",
+    "innerVoice": "Just a little escape. I don\u2019t want to feel this now.",
+    "cost": "Emotional avoidance, lack of presence, disconnection from real needs.",
+    "origin": "I wasn\u2019t taught how to sit with emotions. So I learned to run from them.",
+    "desire": "I want to meet discomfort with curiosity, not escape.",
+    "mantra": "Feeling is healing."
+  },
+  {
+    "name": "Self-Comparison",
+    "behavior": "I constantly measure myself against others and feel like I fall short.",
+    "innerVoice": "They\u2019re better than me. I\u2019ll never catch up.",
+    "cost": "Loss of joy, creativity, and motivation. Chronic inadequacy.",
+    "origin": "I was rewarded only when I was the best. I learned that my worth is ranked.",
+    "desire": "I want to grow at my own pace, not someone else's.",
+    "mantra": "I\u2019m not behind. I\u2019m on my own path."
+  },
+  {
+    "name": "Avoiding Conflict",
+    "behavior": "I stay silent to keep peace, even when I disagree or feel wronged.",
+    "innerVoice": "It's not worth the fight. Keep the peace.",
+    "cost": "Built-up resentment, inauthentic relationships, internal tension.",
+    "origin": "I grew up in a home where speaking up created chaos. Silence became safety.",
+    "desire": "I want to speak my truth with courage and calm.",
+    "mantra": "My voice matters \u2014 even in disagreement."
+  },
+  {
+    "name": "Carrying Old Guilt",
+    "behavior": "I replay old mistakes and punish myself for things long gone.",
+    "innerVoice": "You messed up. You don\u2019t deserve to move on.",
+    "cost": "Low self-worth, emotional heaviness, lost present joy.",
+    "origin": "No one taught me how to forgive myself. I learned to cling to guilt.",
+    "desire": "I want to accept my past, learn from it, and walk free.",
+    "mantra": "I did my best with what I knew then."
+  },
+  {
+    "name": "Victim Identity",
+    "behavior": "I often feel like life is happening to me and I have no control.",
+    "innerVoice": "Bad things always happen to me. I can\u2019t win.",
+    "cost": "Disempowerment, stagnation, resentment.",
+    "origin": "Repeated hardships conditioned me to expect defeat.",
+    "desire": "I want to reclaim agency and take ownership of my response.",
+    "mantra": "I\u2019m not powerless \u2014 I\u2019m rebuilding."
+  },
+  {
+    "name": "Neglecting Health",
+    "behavior": "I ignore my body\u2019s needs \u2014 rest, food, movement \u2014 and postpone care.",
+    "innerVoice": "I\u2019ll take care of it later. Right now, I\u2019m too busy.",
+    "cost": "Low energy, physical strain, emotional imbalance.",
+    "origin": "I was never taught that self-care is sacred, not selfish.",
+    "desire": "I want to honor my body as the foundation of my strength.",
+    "mantra": "My body is my first home. I will treat it with love."
+  },
+  {
+    "name": "Control Addiction",
+    "behavior": "I try to manage everything and everyone to avoid feeling anxious or uncertain.",
+    "innerVoice": "If I let go, it will all fall apart.",
+    "cost": "Mental exhaustion, strained relationships, lack of flow.",
+    "origin": "Growing up in chaos taught me to grab onto control to feel safe.",
+    "desire": "I want to trust that things can unfold even without my grip.",
+    "mantra": "Letting go creates space for grace."
+  },
+  {
+    "name": "Resentment Loops",
+    "behavior": "I hold onto anger toward those who hurt me \u2014 I keep replaying what they did.",
+    "innerVoice": "They never apologized. I can\u2019t move on until they do.",
+    "cost": "Bitterness, emotional fatigue, blocked healing.",
+    "origin": "I never got closure. So I turned pain into a grudge.",
+    "desire": "I want to release this weight, not for them \u2014 for me.",
+    "mantra": "Forgiveness is how I reclaim my peace."
+  },
+  {
+    "name": "Spiritual Avoidance",
+    "behavior": "I avoid quiet, stillness, or reflection when I\u2019m hurting.",
+    "innerVoice": "I don\u2019t want to feel this. Keep busy. Numb out.",
+    "cost": "Disconnection from self and source. Surface-level living.",
+    "origin": "Stillness once revealed pain I wasn\u2019t ready for. So I fled from it.",
+    "desire": "I want to make space for spirit and truth, even when it\u2019s hard.",
+    "mantra": "Stillness is not scary. It\u2019s sacred."
+  },
+  {
+    "name": "Overloading Mind",
+    "behavior": "I take on too many mental tabs \u2014 plans, worries, responsibilities \u2014 at once.",
+    "innerVoice": "I have to do it all. I can\u2019t forget anything. I must stay ahead.",
+    "cost": "Burnout, forgetfulness, constant mental noise.",
+    "origin": "I was praised for being 'capable' and learned to never drop the ball.",
+    "desire": "I want peace of mind and focus, not mental chaos.",
+    "mantra": "I can do one thing well. I don\u2019t have to do it all at once."
+  },
+  {
+    "name": "Stuck in Past Decisions",
+    "behavior": "I replay regrets and fear making new choices because of past pain.",
+    "innerVoice": "You blew it last time. Don\u2019t trust yourself again.",
+    "cost": "Stagnation, loss of self-trust, future paralysis.",
+    "origin": "A past failure shaped my belief that I make bad choices.",
+    "desire": "I want to believe in growth, not perfection.",
+    "mantra": "I am not my past \u2014 I am my next decision."
+  }
+]
