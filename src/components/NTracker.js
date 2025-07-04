@@ -1,8 +1,10 @@
-// Negative Loop Clarifier / Tracker React App with Toggle View Buttons
+// Negative Loop Clarifier / Tracker React App with Toggle View Icons
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Form, Collapse } from 'react-bootstrap';
-  import defaultLoops from './negative_loop_all_15.json';
+import { Plus, Minus, Trash2, Edit } from 'react-feather';
+import defaultLoops from './negative_loop_all_15.json';
+
 const defaultTemplate = {
   name: '',
   behavior: '',
@@ -14,9 +16,7 @@ const defaultTemplate = {
 };
 
 function App() {
-
-
-const [loops, setLoops] = useState(defaultLoops);
+  const [loops, setLoops] = useState(defaultLoops);
   const [showModal, setShowModal] = useState(false);
   const [currentLoop, setCurrentLoop] = useState(defaultTemplate);
   const [editIndex, setEditIndex] = useState(null);
@@ -76,10 +76,10 @@ const [loops, setLoops] = useState(defaultLoops);
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <h2 className="text-center mb-4">🧠 Negative Loop Clarifier / Tracker</h2>
 
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
         <Button variant="primary" onClick={() => openModal()}>Add New Loop</Button>
         <div>
           <input type="file" accept=".json" onChange={handleImport} />
@@ -94,13 +94,15 @@ const [loops, setLoops] = useState(defaultLoops);
           {loops.map((loop, index) => (
             <div key={index} className="list-group-item">
               <div className="d-flex justify-content-between align-items-center">
-                <h5 className="mb-0">{loop.name}</h5>
-                <div>
-                  <Button variant="info" size="sm" className="me-2" onClick={() => toggleCollapse(index)}>
-                    {openIndex === index ? 'Hide' : 'Show'} Details
-                  </Button>
-                  <Button variant="outline-secondary" size="sm" className="me-2" onClick={() => openModal(loop, index)}>Edit</Button>
-                  <Button variant="outline-danger" size="sm" onClick={() => handleDelete(index)}>Delete</Button>
+                <div className="d-flex align-items-center gap-2">
+                  <span onClick={() => toggleCollapse(index)} role="button">
+                    {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
+                  </span>
+                  <strong>{loop.name}</strong>
+                </div>
+                <div className="d-flex gap-2">
+                  <Button variant="outline-secondary" size="sm" onClick={() => openModal(loop, index)}><Edit size={16} /></Button>
+                  <Button variant="outline-danger" size="sm" onClick={() => handleDelete(index)}><Trash2 size={16} /></Button>
                 </div>
               </div>
               <Collapse in={openIndex === index}>
