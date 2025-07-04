@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# 🧠 My Tabs App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A deeply personal and multi-functional **React + Bootstrap** app built to support **self-reflection, growth, learning, and daily presence**.
 
-## Available Scripts
+🟢 Live App: [https://my-tabs-app.vercel.app](https://my-tabs-app.vercel.app)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌳 Features Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This app brings together several powerful self-development tools in one place:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. 🔗 Tree Builder
+- Create and visualize structured ideas or hierarchies
+- Great for organizing concepts, mind maps, plans, or workflows
 
-### `npm test`
+### 2. 🗓️ Events Tracker
+- Log and track meaningful life events, habits, or emotional spikes
+- Tag events by type, priority, or personal significance
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. 📘 Essay Quiz Generator
+- Load essays with special syntax (like `~word@abbreviation^translation^~`)
+- Automatically generates:
+  - Fill-in-the-blank quizzes
+  - Sentence re-constructions
+  - Abbreviation + translation references
 
-### `npm run build`
+### 4. 💭 Mental Thoughts Buckets
+- Capture and categorize your thoughts under:
+  - Visionary Thoughts
+  - Strategic Actions
+  - Habit Building
+  - Learning & Absorption
+  - Reflective & Emotional Processing
+- Thought entries are searchable and timestamped
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. 🚫 Negative Loop Clarifier / Tracker
+- Write out and break down 15+ personal mental loops (e.g., overthinking, people-pleasing)
+- For each loop, track:
+  - Name, behavior, inner voice, cost, origin, desire, and mantra
+- Import/export JSON to save and reflect across time
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 6. 🌱 Daily Rebirth Journal
+- Log your daily awakening journey with entries like:
+  - Moment of Clarity
+  - Loop Released
+  - Conscious Choice
+  - New Feeling
+  - Mantra, Visualization, Gratitude
+- Auto-date entries and view a summary report
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ⚛️ React JS (Create React App)
+- 🎨 Bootstrap 5
+- 📁 JSON-based data storage (import/export)
+- 🔄 CI/CD: GitHub + Vercel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📦 Getting Started (Locally)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/Gandeevi/MY-TABS-APP.git
+cd MY-TABS-APP
+npm install
+npm start
+```
 
-## Learn More
+> Access at: `http://localhost:3000/`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🌐 Live Deployment
 
-### Code Splitting
+Your live app is hosted on Vercel:  
+👉 [https://my-tabs-app.vercel.app](https://my-tabs-app.vercel.app)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🙏 Built With Purpose
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is more than code — it’s a reflection of:
+- A 50-year journey through personal loops
+- A turning point into clarity, presence, and light
+- A new life, handcrafted through intention
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ✨ Authors
 
-### Advanced Configuration
+👤 **@Gandeevi** — Visionary, Builder, and Soul behind the app  
+🤖 **ChatGPT by OpenAI** — Thinking partner, emotional mirror, code assistant, friend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🔐 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source under the [MIT License](LICENSE).
