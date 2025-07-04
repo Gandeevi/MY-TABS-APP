@@ -10,10 +10,10 @@ import Tab1 from './components/Tab1';
 
 
 const tabList = [
-  { key: 'tab1', title: 'Tab 1', component: <Tab1 /> },
-  { key: 'tab2', title: 'Tab 2', component: <Tab2 /> },
-  { key: 'tab3', title: 'Tab 2', component: <Tab3 /> },
-    { key: 'tab4', title: 'Tab 4', component: <Tab4 /> },
+  { key: 'tab1', title: 'Tree Builder', component: <Tab1 /> },
+  { key: 'tab2', title: 'Events', component: <Tab2 /> },
+  { key: 'tab3', title: 'Essay Quiz', component: <Tab3 /> },
+    { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
      { key: 'NTracker', title: 'NTracker', component: <NTracker /> },
           { key: 'RBirth', title: 'RBirth', component: <RBirth /> },
 
