@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Nav, Tab } from 'react-bootstrap';
 
-import Tab1 from './components/Tab1';
+import Tab1 from './components/EMICalc';
  import Tab2 from './components/Tab2';
  import Tab3 from './components/Tab3';
  import Tab4 from './components/Tab4';
@@ -10,7 +10,7 @@ import Tab1 from './components/Tab1';
 
 
 const tabList = [
-  { key: 'tab1', title: 'Tree Builder', component: <Tab1 /> },
+  { key: 'tab1', title: 'EMI calculator', component: <Tab1 /> },
   { key: 'tab2', title: 'Events', component: <Tab2 /> },
   { key: 'tab3', title: 'Essay Quiz', component: <Tab3 /> },
     { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
