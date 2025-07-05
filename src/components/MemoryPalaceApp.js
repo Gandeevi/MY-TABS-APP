@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Button, Card, Form, Modal, Badge, Accordion } from "react-bootstrap";
-import ImageLabeler from "./MemoryPalace";
+import React, { useState, useRef } from "react";
+import { Button, Card, Form, Modal, Badge, Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Plus, Pencil, Trash, Play, Upload, Download, ChevronLeft, ChevronRight } from "lucide-react";
+import ImageLabeler from "./ImageLabeler";
 
 const MemoryPalaceApp = () => {
   const [palaces, setPalaces] = useState([]);
@@ -13,6 +14,7 @@ const MemoryPalaceApp = () => {
   const [currentPalaceIndex, setCurrentPalaceIndex] = useState(null);
   const [showPlayModal, setShowPlayModal] = useState(false);
   const [playRoomIndex, setPlayRoomIndex] = useState(0);
+  const fileInputRef = useRef(null);
 
   const openModal = (index = null) => {
     setEditingIndex(index);
@@ -72,41 +74,68 @@ const MemoryPalaceApp = () => {
     setShowPlayModal(true);
   };
 
-  const nextRoom = () => {
-    setPlayRoomIndex((prev) => prev + 1);
+  const nextRoom = () => setPlayRoomIndex((prev) => prev + 1);
+  const prevRoom = () => setPlayRoomIndex((prev) => prev - 1);
+
+  const exportData = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(palaces));
+    const dl = document.createElement("a");
+    dl.setAttribute("href", dataStr);
+    dl.setAttribute("download", "memory-palaces.json");
+    dl.click();
   };
 
-  const prevRoom = () => {
-    setPlayRoomIndex((prev) => prev - 1);
+  const importData = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const imported = JSON.parse(e.target.result);
+        setPalaces(imported);
+      } catch (err) {
+        alert("Invalid JSON file");
+      }
+    };
+    reader.readAsText(file);
   };
 
   return (
     <div className="container mt-4">
-      <h3>Memory Palaces</h3>
-      <Button onClick={() => openModal()} className="mb-3">+ Create Memory Palace</Button>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3>Memory Palaces</h3>
+        <div>
+          <OverlayTrigger overlay={<Tooltip>Create</Tooltip>}><Button onClick={() => openModal()} size="sm" className="me-1"><Plus size={16} /></Button></OverlayTrigger>
+          <OverlayTrigger overlay={<Tooltip>Import</Tooltip>}><Button size="sm" className="me-1" onClick={() => fileInputRef.current.click()}><Upload size={16} /></Button></OverlayTrigger>
+          <OverlayTrigger overlay={<Tooltip>Export</Tooltip>}><Button size="sm" onClick={exportData}><Download size={16} /></Button></OverlayTrigger>
+          <input type="file" ref={fileInputRef} onChange={importData} style={{ display: "none" }} />
+        </div>
+      </div>
 
       <Accordion defaultActiveKey="0">
         {palaces.map((palace, index) => (
           <Accordion.Item eventKey={index.toString()} key={index}>
             <Accordion.Header>
-              <Badge bg="success" className="me-2">Start</Badge>
-              {palace.rooms.map((room, rIndex) => (
-                <span key={room.id}>
-                  <Badge bg="info" className="me-1">{room.name || `Room ${rIndex + 1}`}</Badge>
-                  {rIndex < palace.rooms.length - 1 && <span className="me-1">→</span>}
+              <div className="w-100 d-flex justify-content-between align-items-center">
+                <span>{palace.name}</span>
+                <span>
+                  <Badge bg="success" className="me-1">Start</Badge>
+                  {palace.rooms.map((room, rIndex) => (
+                    <span key={room.id}>
+                      <Badge bg="info" className="me-1">{room.name || `Room ${rIndex + 1}`}</Badge>
+                      {rIndex < palace.rooms.length - 1 && <span className="me-1">→</span>}
+                    </span>
+                  ))}
+                  <Badge bg="dark" className="ms-1">End</Badge>
                 </span>
-              ))}
-              <Badge bg="dark" className="ms-2">End</Badge>
+              </div>
             </Accordion.Header>
             <Accordion.Body>
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h5>{palace.name}</h5>
-                <div>
-                  <Button variant="outline-primary" size="sm" className="me-2" onClick={() => openRoomModal(index)}>+ Add Room</Button>
-                  <Button variant="outline-success" size="sm" className="me-2" onClick={() => startPlayMode(index)}>▶ Play Mode</Button>
-                  <Button variant="outline-info" size="sm" className="me-2" onClick={() => openModal(index)}>Edit</Button>
-                  <Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}>Delete</Button>
-                </div>
+              <div className="d-flex justify-content-end mb-2">
+                <OverlayTrigger overlay={<Tooltip>Add Room</Tooltip>}><Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}><Plus size={16} /></Button></OverlayTrigger>
+                <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger>
+                <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}><Pencil size={16} /></Button></OverlayTrigger>
+                <OverlayTrigger overlay={<Tooltip>Delete Palace</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}><Trash size={16} /></Button></OverlayTrigger>
               </div>
               <Accordion>
                 {palace.rooms.map((room, rIndex) => (
@@ -114,8 +143,8 @@ const MemoryPalaceApp = () => {
                     <Accordion.Header>{room.name || `Room ${rIndex + 1}`}</Accordion.Header>
                     <Accordion.Body>
                       <div className="d-flex justify-content-end mb-2">
-                        <Button variant="outline-info" size="sm" className="me-2" onClick={() => openRoomModal(index, rIndex)}>Edit Room</Button>
-                        <Button variant="outline-danger" size="sm" onClick={() => deleteRoom(index, rIndex)}>Delete Room</Button>
+                        <OverlayTrigger overlay={<Tooltip>Edit Room</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openRoomModal(index, rIndex)}><Pencil size={16} /></Button></OverlayTrigger>
+                        <OverlayTrigger overlay={<Tooltip>Delete Room</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deleteRoom(index, rIndex)}><Trash size={16} /></Button></OverlayTrigger>
                       </div>
                       <ImageLabeler />
                     </Accordion.Body>
@@ -171,18 +200,14 @@ const MemoryPalaceApp = () => {
 
       <Modal show={showPlayModal} onHide={() => setShowPlayModal(false)} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Play Mode - {palaces[currentPalaceIndex]?.rooms[playRoomIndex]?.name}</Modal.Title>
+          <Modal.Title>{palaces[currentPalaceIndex]?.name} - {palaces[currentPalaceIndex]?.rooms[playRoomIndex]?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ImageLabeler />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={prevRoom} disabled={playRoomIndex === 0}>
-            ← Previous
-          </Button>
-          <Button variant="primary" onClick={nextRoom} disabled={playRoomIndex === palaces[currentPalaceIndex]?.rooms.length - 1}>
-            Next →
-          </Button>
+          <Button variant="secondary" onClick={prevRoom} disabled={playRoomIndex === 0}><ChevronLeft size={16} /> Previous</Button>
+          <Button variant="primary" onClick={nextRoom} disabled={playRoomIndex === palaces[currentPalaceIndex]?.rooms.length - 1}>Next <ChevronRight size={16} /></Button>
         </Modal.Footer>
       </Modal>
     </div>
