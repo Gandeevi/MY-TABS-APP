@@ -82,46 +82,24 @@ Special thanks to **ChatGPT by OpenAI** for design assistance, UX ideas, and cod
 
 
 
+ 
 
-### 1. 🔗 Tree Builder
-- Create and visualize structured ideas or hierarchies
-- Great for organizing concepts, mind maps, plans, or workflows
-
-### 2. 🗓️ Events Tracker
-- Log and track meaningful life events, habits, or emotional spikes
-- Tag events by type, priority, or personal significance
-
-### 3. 📘 Essay Quiz Generator
+ 📘 Essay Quiz Generator
 - Load essays with special syntax (like `~word@abbreviation^translation^~`)
 - Automatically generates:
   - Fill-in-the-blank quizzes
   - Sentence re-constructions
   - Abbreviation + translation references
 
-### 4. 💭 Mental Thoughts Buckets
-- Capture and categorize your thoughts under:
-  - Visionary Thoughts
-  - Strategic Actions
-  - Habit Building
-  - Learning & Absorption
-  - Reflective & Emotional Processing
-- Thought entries are searchable and timestamped
+ 
 
-### 5. 🚫 Negative Loop Clarifier / Tracker
+ 🚫 Negative Loop Clarifier / Tracker
 - Write out and break down 15+ personal mental loops (e.g., overthinking, people-pleasing)
 - For each loop, track:
   - Name, behavior, inner voice, cost, origin, desire, and mantra
 - Import/export JSON to save and reflect across time
 
-### 6. 🌱 Daily Rebirth Journal
-- Log your daily awakening journey with entries like:
-  - Moment of Clarity
-  - Loop Released
-  - Conscious Choice
-  - New Feeling
-  - Mantra, Visualization, Gratitude
-- Auto-date entries and view a summary report
-
+ 
 ---
 
 ## 🚀 Tech Stack
