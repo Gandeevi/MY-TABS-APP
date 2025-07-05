@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Button, Card, Form, Modal, Badge, Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Plus, Pencil, Trash, Play, Upload, Download, ChevronLeft, ChevronRight } from "lucide-react";
-import ImageLabeler from "./MemoryPalace";
+import ImageLabeler from "./Location";
 
 const MemoryPalaceApp = () => {
   const [palaces, setPalaces] = useState([]);

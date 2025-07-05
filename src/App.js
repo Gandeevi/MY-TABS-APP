@@ -10,7 +10,7 @@ import Tab1 from './components/EMICalc';
  import Utilities from './components/Utilities';
 
   import MemoryPalaceApp from './components/MemoryPalaceApp';
-  import MemoryPalace from './components/MemoryPalace';
+  import MemoryPalace from './components/Location';
 
 
 
