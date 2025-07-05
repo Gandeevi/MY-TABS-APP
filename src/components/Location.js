@@ -1,27 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Modal, Button, Table } from "react-bootstrap";
+import pegList from "./PegList";
 
-const ImageLabeler = () => {
-  const [image, setImage] = useState(null);
-  const [pins, setPins] = useState([]);
+const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = () => {} }) => {
+  const [image, setImage] = useState(initialImage);
+  const [pins, setPins] = useState(initialPins);
   const [selectedPinIndex, setSelectedPinIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    description: "",
-    image: "",
-    associations: "",
+    // description: "",
+    // image: "",
+    // associations: "",
     mnemonic: "",
-    mnemonicSentence: "",
-    tags: "",
-    creationDate: new Date().toISOString().split("T")[0],
-    lastRevised: new Date().toISOString().split("T")[0],
-    personalNotes: ""
+    mnemonicSentence: ""
+    // tags: "",
+    // creationDate: new Date().toISOString().split("T")[0],
+    // lastRevised: new Date().toISOString().split("T")[0],
+    // personalNotes: ""
   });
+
+  useEffect(() => {
+    setImage(initialImage);
+    setPins(initialPins);
+  }, [initialImage, initialPins]);
+
+  useEffect(() => {
+    onDataChange(image, pins);
+  }, [image, pins]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if (file) setImage(URL.createObjectURL(file));
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleImageDoubleClick = (e) => {
@@ -35,20 +51,21 @@ const ImageLabeler = () => {
       number: pins.length + 1,
       data: {
         name: "",
-        description: "",
-        image: "",
-        associations: "",
+        // description: "",
+        // image: "",
+        // associations: "",
         mnemonic: "",
         mnemonicSentence: "",
-        tags: "",
-        creationDate: new Date().toISOString().split("T")[0],
-        lastRevised: new Date().toISOString().split("T")[0],
-        personalNotes: ""
+        // tags: "",
+        // creationDate: new Date().toISOString().split("T")[0],
+        // lastRevised: new Date().toISOString().split("T")[0],
+        // personalNotes: ""
       }
     };
 
-    setPins([...pins, newPin]);
-    setSelectedPinIndex(pins.length);
+    const updatedPins = [...pins, newPin];
+    setPins(updatedPins);
+    setSelectedPinIndex(updatedPins.length - 1);
     setFormData(newPin.data);
     setShowModal(true);
   };
@@ -123,10 +140,10 @@ const ImageLabeler = () => {
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Tags</th>
-                <th>Created</th>
-                <th>Revised</th>
+                    <th>Peg Word</th>
+                    <th>mnemonic</th>
+                    <th>mnemonicSentence</th>
+ 
                 <th>Actions</th>
               </tr>
             </thead>
@@ -135,10 +152,15 @@ const ImageLabeler = () => {
                 <tr key={index}>
                   <td>{pin.number}</td>
                   <td>{pin.data?.name || ""}</td>
+                  <td>{pegList[pin.number] || ""}</td>
+
+                  <td>{pin.data?.mnemonic || ""}</td>
+                  <td>{pin.data?.mnemonicSentence || ""}</td>
+ {/* 
                   <td>{pin.data?.description || ""}</td>
                   <td>{pin.data?.tags || ""}</td>
                   <td>{pin.data?.creationDate || ""}</td>
-                  <td>{pin.data?.lastRevised || ""}</td>
+                  <td>{pin.data?.lastRevised || ""}</td> */}
                   <td>
                     <Button variant="info" size="sm" className="me-2" onClick={() => handlePinClick(index)}>Edit</Button>
                     <Button variant="danger" size="sm" onClick={() => handleDelete(index)}>Delete</Button>

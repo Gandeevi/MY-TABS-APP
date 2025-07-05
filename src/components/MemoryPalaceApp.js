@@ -146,7 +146,17 @@ const MemoryPalaceApp = () => {
                         <OverlayTrigger overlay={<Tooltip>Edit Room</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openRoomModal(index, rIndex)}><Pencil size={16} /></Button></OverlayTrigger>
                         <OverlayTrigger overlay={<Tooltip>Delete Room</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deleteRoom(index, rIndex)}><Trash size={16} /></Button></OverlayTrigger>
                       </div>
-                      <ImageLabeler />
+                     <ImageLabeler
+  initialImage={room.image}
+  initialPins={room.pins || []}
+  onDataChange={(img, pins) => {
+    const updated = [...palaces];
+    updated[index].rooms[rIndex].image = img;
+    updated[index].rooms[rIndex].pins = pins;
+    setPalaces(updated);
+  }}
+/>
+
                     </Accordion.Body>
                   </Accordion.Item>
                 ))}
