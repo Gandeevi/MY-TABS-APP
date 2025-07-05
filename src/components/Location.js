@@ -95,12 +95,26 @@ const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = ()
 
   return (
     <div className="container mt-4">
-      <h3>Image Pin Drop</h3>
+      {/* <h3>Image Pin Drop</h3> */}
 
-      <Form.Group controlId="formFile" className="mb-3">
+      {/* <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Upload Image</Form.Label>
         <Form.Control type="file" onChange={handleImageUpload} />
-      </Form.Group>
+      </Form.Group> */}
+
+<div className="mb-3">
+  <label htmlFor="image-upload" className="btn btn-outline-secondary btn-sm">
+    <span role="img" aria-label="upload">📷</span> Upload Image
+  </label>
+  <input
+    id="image-upload"
+    type="file"
+    accept="image/*"
+    onChange={handleImageUpload}
+    style={{ display: "none" }}
+  />
+</div>
+
 
       {image && (
         <div

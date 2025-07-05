@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { Button, Card, Form, Modal, Badge, Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Plus, Pencil, Trash, Play, Upload, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import ImageLabeler from "./Location";
+import HomeIntro from "./HomeIntro";
+
 
 const MemoryPalaceApp = () => {
   const [palaces, setPalaces] = useState([]);
@@ -103,7 +105,7 @@ const MemoryPalaceApp = () => {
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3>Memory Palaces</h3>
+        <h3>Memory Palace</h3>
         <div>
           <OverlayTrigger overlay={<Tooltip>Create</Tooltip>}><Button onClick={() => openModal()} size="sm" className="me-1"><Plus size={16} /></Button></OverlayTrigger>
           <OverlayTrigger overlay={<Tooltip>Import</Tooltip>}><Button size="sm" className="me-1" onClick={() => fileInputRef.current.click()}><Upload size={16} /></Button></OverlayTrigger>
@@ -112,10 +114,16 @@ const MemoryPalaceApp = () => {
         </div>
       </div>
 
+
+      {palaces.length === 0 && (
+  <HomeIntro onCreate={() => openModal()} />
+)}
+
+
       <Accordion defaultActiveKey="0">
         {palaces.map((palace, index) => (
           <Accordion.Item eventKey={index.toString()} key={index}>
-            <Accordion.Header>
+            {/* <Accordion.Header>
               <div className="w-100 d-flex justify-content-between align-items-center">
                 <span>{palace.name}</span>
                 <span>
@@ -129,18 +137,72 @@ const MemoryPalaceApp = () => {
                   <Badge bg="dark" className="ms-1">End</Badge>
                 </span>
               </div>
-            </Accordion.Header>
+            </Accordion.Header> */}
+
+
+            <Accordion.Header>
+  <div className="w-100 d-flex justify-content-between align-items-center">
+    <div className="d-flex flex-column">
+      <span>{palace.name}</span>
+      <div className="mt-1">
+        <Badge bg="success" className="me-1">Start</Badge>
+        {palace.rooms.map((room, rIndex) => (
+          <span key={room.id}>
+            <Badge bg="info" className="me-1">{room.name || `Room ${rIndex + 1}`}</Badge>
+            {rIndex < palace.rooms.length - 1 && <span className="me-1">→</span>}
+          </span>
+        ))}
+        <Badge bg="dark" className="ms-1">End</Badge>
+      </div>
+    </div>
+    <div className="d-flex">
+      <OverlayTrigger overlay={<Tooltip>Add Room</Tooltip>}>
+        <Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}>
+          <Plus size={16} />
+        </Button>
+      </OverlayTrigger>
+      {/* <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}>
+        <Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}>
+          <Play size={16} />
+        </Button>
+      </OverlayTrigger> */}
+      <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}>
+        <Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}>
+          <Pencil size={16} />
+        </Button>
+      </OverlayTrigger>
+      <OverlayTrigger overlay={<Tooltip>Delete Palace</Tooltip>}>
+        <Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}>
+          <Trash size={16} />
+        </Button>
+      </OverlayTrigger>
+    </div>
+  </div>
+</Accordion.Header>
+
+
             <Accordion.Body>
               <div className="d-flex justify-content-end mb-2">
                 <OverlayTrigger overlay={<Tooltip>Add Room</Tooltip>}><Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}><Plus size={16} /></Button></OverlayTrigger>
-                <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger>
-                <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}><Pencil size={16} /></Button></OverlayTrigger>
+                {/* <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger>
+              */}
+                {/* <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}><Pencil size={16} /></Button></OverlayTrigger>
                 <OverlayTrigger overlay={<Tooltip>Delete Palace</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}><Trash size={16} /></Button></OverlayTrigger>
+               */}
+              
               </div>
               <Accordion>
                 {palace.rooms.map((room, rIndex) => (
                   <Accordion.Item eventKey={rIndex.toString()} key={room.id}>
-                    <Accordion.Header>{room.name || `Room ${rIndex + 1}`}</Accordion.Header>
+<Accordion.Header>
+  {room.name || `Room ${rIndex + 1}`}{" "}
+  {room.pins?.length > 0 && (
+    <span className="text-muted" style={{ fontSize: "0.8em", marginLeft: "10px" }}>
+      Start → {room.pins.map(p => p.data?.name || "").filter(Boolean).join(" → ")} → End
+    </span>
+  )}
+</Accordion.Header>
+
                     <Accordion.Body>
                       <div className="d-flex justify-content-end mb-2">
                         <OverlayTrigger overlay={<Tooltip>Edit Room</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openRoomModal(index, rIndex)}><Pencil size={16} /></Button></OverlayTrigger>
@@ -213,7 +275,11 @@ const MemoryPalaceApp = () => {
           <Modal.Title>{palaces[currentPalaceIndex]?.name} - {palaces[currentPalaceIndex]?.rooms[playRoomIndex]?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ImageLabeler />
+         <ImageLabeler
+  initialImage={palaces[currentPalaceIndex]?.rooms[playRoomIndex]?.image}
+  initialPins={palaces[currentPalaceIndex]?.rooms[playRoomIndex]?.pins || []}
+  readOnly={true}
+/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={prevRoom} disabled={playRoomIndex === 0}><ChevronLeft size={16} /> Previous</Button>
