@@ -10,24 +10,23 @@ import Tab1 from './components/EMICalc';
  import Utilities from './components/Utilities';
 
   import MemoryPalaceApp from './components/MemoryPalaceApp';
-  import MemoryPalace from './components/Location';
-
+ 
 
 
 const tabList = [
      { key: 'NTracker', title: 'NTracker', component: <NTracker /> },
-          { key: 'Utilities', title: 'Utilities', component: <Utilities /> },
+      { key: 'Utilities', title: 'Utilities', component: <Utilities /> },
       { key: 'MemoryPalaceApp', title: 'MemoryPalaceApp', component: <MemoryPalaceApp /> },
 
-            { key: 'MemoryPalace', title: 'MemoryPalace', component: <MemoryPalace /> },
+            // { key: 'MemoryPalace', title: 'MemoryPalace', component: <MemoryPalaceApp /> },
 
 
   { key: 'tab1', title: 'EMI calculator', component: <Tab1 /> },
-  { key: 'tab2', title: 'Events', component: <Tab2 /> },
+  // { key: 'tab2', title: 'Events', component: <Tab2 /> },
   { key: 'tab3', title: 'Essay Quiz', component: <Tab3 /> },
-    { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
+    // { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
   
-          { key: 'RBirth', title: 'RBirth', component: <RBirth /> },
+    //       { key: 'RBirth', title: 'RBirth', component: <RBirth /> },
 
 ];
 
