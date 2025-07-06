@@ -1,43 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Modal, Button, Table } from "react-bootstrap";
-import pegList from "./PegList";
 
-const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = () => {} }) => {
-  const [image, setImage] = useState(initialImage);
-  const [pins, setPins] = useState(initialPins);
+const ImageLabeler = () => {
+  const [image, setImage] = useState(null);
+  const [pins, setPins] = useState([]);
   const [selectedPinIndex, setSelectedPinIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    // description: "",
-    // image: "",
-    // associations: "",
+    description: "",
+    image: "",
+    associations: "",
     mnemonic: "",
-    mnemonicSentence: ""
-    // tags: "",
-    // creationDate: new Date().toISOString().split("T")[0],
-    // lastRevised: new Date().toISOString().split("T")[0],
-    // personalNotes: ""
+    mnemonicSentence: "",
+    tags: "",
+    creationDate: new Date().toISOString().split("T")[0],
+    lastRevised: new Date().toISOString().split("T")[0],
+    personalNotes: ""
   });
-
-  useEffect(() => {
-    setImage(initialImage);
-    setPins(initialPins);
-  }, [initialImage, initialPins]);
-
-  useEffect(() => {
-    onDataChange(image, pins);
-  }, [image, pins]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setImage(event.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    if (file) setImage(URL.createObjectURL(file));
   };
 
   const handleImageDoubleClick = (e) => {
@@ -51,21 +35,20 @@ const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = ()
       number: pins.length + 1,
       data: {
         name: "",
-        // description: "",
-        // image: "",
-        // associations: "",
+        description: "",
+        image: "",
+        associations: "",
         mnemonic: "",
         mnemonicSentence: "",
-        // tags: "",
-        // creationDate: new Date().toISOString().split("T")[0],
-        // lastRevised: new Date().toISOString().split("T")[0],
-        // personalNotes: ""
+        tags: "",
+        creationDate: new Date().toISOString().split("T")[0],
+        lastRevised: new Date().toISOString().split("T")[0],
+        personalNotes: ""
       }
     };
 
-    const updatedPins = [...pins, newPin];
-    setPins(updatedPins);
-    setSelectedPinIndex(updatedPins.length - 1);
+    setPins([...pins, newPin]);
+    setSelectedPinIndex(pins.length);
     setFormData(newPin.data);
     setShowModal(true);
   };
@@ -95,26 +78,12 @@ const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = ()
 
   return (
     <div className="container mt-4">
-      {/* <h3>Image Pin Drop</h3> */}
+      <h3>Image Pin Drop</h3>
 
-      {/* <Form.Group controlId="formFile" className="mb-3">
+      <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Upload Image</Form.Label>
         <Form.Control type="file" onChange={handleImageUpload} />
-      </Form.Group> */}
-
-<div className="mb-3">
-  <label htmlFor="image-upload" className="btn btn-outline-secondary btn-sm">
-    <span role="img" aria-label="upload">📷</span> Upload Image
-  </label>
-  <input
-    id="image-upload"
-    type="file"
-    accept="image/*"
-    onChange={handleImageUpload}
-    style={{ display: "none" }}
-  />
-</div>
-
+      </Form.Group>
 
       {image && (
         <div
@@ -154,10 +123,10 @@ const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = ()
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                    <th>Peg Word</th>
-                    <th>mnemonic</th>
-                    <th>mnemonicSentence</th>
- 
+                <th>Description</th>
+                <th>Tags</th>
+                <th>Created</th>
+                <th>Revised</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -166,15 +135,10 @@ const ImageLabeler = ({ initialImage = null, initialPins = [], onDataChange = ()
                 <tr key={index}>
                   <td>{pin.number}</td>
                   <td>{pin.data?.name || ""}</td>
-                  <td>{pegList[pin.number] || ""}</td>
-
-                  <td>{pin.data?.mnemonic || ""}</td>
-                  <td>{pin.data?.mnemonicSentence || ""}</td>
- {/* 
                   <td>{pin.data?.description || ""}</td>
                   <td>{pin.data?.tags || ""}</td>
                   <td>{pin.data?.creationDate || ""}</td>
-                  <td>{pin.data?.lastRevised || ""}</td> */}
+                  <td>{pin.data?.lastRevised || ""}</td>
                   <td>
                     <Button variant="info" size="sm" className="me-2" onClick={() => handlePinClick(index)}>Edit</Button>
                     <Button variant="danger" size="sm" onClick={() => handleDelete(index)}>Delete</Button>

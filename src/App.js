@@ -10,12 +10,26 @@ import Tab1 from './components/EMICalc';
  import Utilities from './components/Utilities';
 
   import MemoryPalaceApp from './components/MemoryPalaceApp';
- 
+   import DaxJavaCrud from './components/DaxJavaCrud';
+   import DelimiterJsonTool from './components/DelimiterJsonTool';
+      import JsonViewerSearchable from './components/JsonViewerSearchable';
+
+
 
 
 const tabList = [
+
+        { key: 'JsonViewerSearchable', title: 'JsonViewerSearchable', component: <JsonViewerSearchable /> },
+
+     { key: 'DelimiterJsonTool', title: 'DelimiterJsonTool', component: <DelimiterJsonTool /> },
+
      { key: 'NTracker', title: 'NTracker', component: <NTracker /> },
-      { key: 'Utilities', title: 'Utilities', component: <Utilities /> },
+
+          { key: 'DaxJavaCrud', title: 'DaxJavaCrud', component: <DaxJavaCrud /> },
+
+     
+     
+     { key: 'Utilities', title: 'Utilities', component: <Utilities /> },
       { key: 'MemoryPalaceApp', title: 'MemoryPalaceApp', component: <MemoryPalaceApp /> },
 
             // { key: 'MemoryPalace', title: 'MemoryPalace', component: <MemoryPalaceApp /> },
