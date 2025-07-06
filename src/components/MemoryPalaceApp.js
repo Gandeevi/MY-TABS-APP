@@ -133,7 +133,7 @@ const MemoryPalaceApp = () => {
             <Accordion.Body>
               <div className="d-flex justify-content-end mb-2">
                 <OverlayTrigger overlay={<Tooltip>Add Room</Tooltip>}><Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}><Plus size={16} /></Button></OverlayTrigger>
-                <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger>
+                {/* <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger> */}
                 <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}><Pencil size={16} /></Button></OverlayTrigger>
                 <OverlayTrigger overlay={<Tooltip>Delete Palace</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}><Trash size={16} /></Button></OverlayTrigger>
               </div>
@@ -225,3 +225,5 @@ const MemoryPalaceApp = () => {
 };
 
 export default MemoryPalaceApp;
+
+// test
