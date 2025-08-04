@@ -14,7 +14,7 @@ function FinancialCalculator() {
   const [fdAmount, setFdAmount] = useState('');
   const [fdRate, setFdRate] = useState('');
   const [fdTime, setFdTime] = useState('');
-  const [fdResult, setFdResult] = useState(null);
+  const [fdResult, setFdResult] = useState([]);
 
   // EMI Logic
   const calculateEMIs = () => {
@@ -54,24 +54,31 @@ function FinancialCalculator() {
   // FD Logic
   const calculateFD = () => {
     const principal = parseFloat(fdAmount);
-    const rate = parseFloat(fdRate);
     const time = parseFloat(fdTime);
+    const rates = fdRate
+      .split(',')
+      .map(r => parseFloat(r.trim()))
+      .filter(r => !isNaN(r));
 
-    if (!principal || !rate || !time) {
+    if (!principal || !time || rates.length === 0) {
       alert('Please enter valid FD details.');
       return;
     }
 
-    const maturity = principal * Math.pow(1 + rate / 100, time);
-    const interest = maturity - principal;
+    const resultSet = rates.map(rate => {
+      const maturity = principal * Math.pow(1 + rate / 100, time);
+      const interest = maturity - principal;
 
-    setFdResult({
-      principal: principal.toFixed(2),
-      maturity: maturity.toFixed(2),
-      interest: interest.toFixed(2),
-      rate,
-      time
+      return {
+        rate,
+        time,
+        principal: principal.toFixed(2),
+        maturity: maturity.toFixed(2),
+        interest: interest.toFixed(2),
+      };
     });
+
+    setFdResult(resultSet);
   };
 
   return (
@@ -179,7 +186,7 @@ function FinancialCalculator() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="comma separated, e.g. 6.5"
+                placeholder="comma separated, e.g. 6.5,7.25"
                 value={fdRate}
                 onChange={e => setFdRate(e.target.value)}
               />
@@ -199,13 +206,30 @@ function FinancialCalculator() {
             </div>
           </div>
 
-          {fdResult && (
-            <div className="alert alert-info">
-              <p><strong>Principal:</strong> ₹{fdResult.principal}</p>
-              <p><strong>Rate:</strong> {fdResult.rate}% p.a.</p>
-              <p><strong>Time:</strong> {fdResult.time} years</p>
-              <p><strong>Maturity Amount:</strong> ₹{fdResult.maturity}</p>
-              <p><strong>Total Interest:</strong> ₹{fdResult.interest}</p>
+          {fdResult.length > 0 && (
+            <div className="table-responsive">
+              <table className="table table-bordered table-striped">
+                <thead className="table-light">
+                  <tr>
+                    <th>Principal (₹)</th>
+                    <th>Interest Rate (%)</th>
+                    <th>Time (Years)</th>
+                    <th>Maturity Amount (₹)</th>
+                    <th>Interest Earned (₹)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fdResult.map((res, idx) => (
+                    <tr key={idx}>
+                      <td>{res.principal}</td>
+                      <td>{res.rate}%</td>
+                      <td>{res.time}</td>
+                      <td>{res.maturity}</td>
+                      <td>{res.interest}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </>
