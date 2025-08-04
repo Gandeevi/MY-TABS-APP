@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function FinancialCalculator() {
-  const [mode, setMode] = useState('EMI'); // 'EMI' or 'FD'
+  const [mode, setMode] = useState('EMI');
 
   // EMI States
   const [loanAmount, setLoanAmount] = useState('');
   const [interestRates, setInterestRates] = useState('');
-  const [tenorMonths, setTenorMonths] = useState('');
+  const [tenorYears, setTenorYears] = useState('');
   const [emiResults, setEmiResults] = useState([]);
 
   // FD States
@@ -19,13 +19,13 @@ function FinancialCalculator() {
   // EMI Logic
   const calculateEMIs = () => {
     const loan = parseFloat(loanAmount);
-    const tenor = parseInt(tenorMonths);
+    const tenorMonths = parseInt(tenorYears) * 12;
     const rates = interestRates
       .split(',')
       .map(r => parseFloat(r.trim()))
       .filter(r => !isNaN(r));
 
-    if (!loan || !tenor || rates.length === 0) {
+    if (!loan || !tenorMonths || rates.length === 0) {
       alert('Please enter valid EMI details.');
       return;
     }
@@ -35,9 +35,9 @@ function FinancialCalculator() {
       const emi =
         loan *
         monthlyRate *
-        Math.pow(1 + monthlyRate, tenor) /
-        (Math.pow(1 + monthlyRate, tenor) - 1);
-      const totalPayment = emi * tenor;
+        Math.pow(1 + monthlyRate, tenorMonths) /
+        (Math.pow(1 + monthlyRate, tenorMonths) - 1);
+      const totalPayment = emi * tenorMonths;
       const totalInterest = totalPayment - loan;
 
       return {
@@ -78,7 +78,7 @@ function FinancialCalculator() {
     <div className="container mt-4">
       <h4 className="mb-3 text-center">💹 Financial Calculator</h4>
 
-      {/* Toggle between EMI and FD */}
+      {/* Toggle */}
       <div className="d-flex justify-content-center mb-4">
         <div className="form-check form-switch">
           <input
@@ -94,35 +94,38 @@ function FinancialCalculator() {
         </div>
       </div>
 
-      {/* EMI Calculator */}
+      {/* EMI Section */}
       {mode === 'EMI' && (
         <>
           <div className="row g-2 mb-3">
             <div className="col-md-4">
-              <label className="form-label">Loan Amount (₹)</label>
+              <label className="form-label">Amount (₹)</label>
               <input
                 type="number"
                 className="form-control"
+                placeholder="e.g. 500000"
                 value={loanAmount}
                 onChange={e => setLoanAmount(e.target.value)}
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Interest Rates (%) (comma-separated)</label>
+              <label className="form-label">Interest Rate(s) (%)</label>
               <input
                 type="text"
                 className="form-control"
+                placeholder="comma separated, e.g. 8.5,9,10"
                 value={interestRates}
                 onChange={e => setInterestRates(e.target.value)}
               />
             </div>
             <div className="col-md-3">
-              <label className="form-label">Tenor (months)</label>
+              <label className="form-label">Tenor (years)</label>
               <input
                 type="number"
                 className="form-control"
-                value={tenorMonths}
-                onChange={e => setTenorMonths(e.target.value)}
+                placeholder="e.g. 5"
+                value={tenorYears}
+                onChange={e => setTenorYears(e.target.value)}
               />
             </div>
             <div className="col-md-1 d-grid align-content-end">
@@ -157,33 +160,36 @@ function FinancialCalculator() {
         </>
       )}
 
-      {/* FD Calculator */}
+      {/* FD Section */}
       {mode === 'FD' && (
         <>
           <div className="row g-2 mb-3">
             <div className="col-md-4">
-              <label className="form-label">Principal Amount (₹)</label>
+              <label className="form-label">Amount (₹)</label>
               <input
                 type="number"
                 className="form-control"
+                placeholder="e.g. 500000"
                 value={fdAmount}
                 onChange={e => setFdAmount(e.target.value)}
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Annual Interest Rate (%)</label>
+              <label className="form-label">Interest Rate(s) (%)</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
+                placeholder="comma separated, e.g. 6.5"
                 value={fdRate}
                 onChange={e => setFdRate(e.target.value)}
               />
             </div>
             <div className="col-md-3">
-              <label className="form-label">Time (Years)</label>
+              <label className="form-label">Tenor (years)</label>
               <input
                 type="number"
                 className="form-control"
+                placeholder="e.g. 5"
                 value={fdTime}
                 onChange={e => setFdTime(e.target.value)}
               />
