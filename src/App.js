@@ -14,10 +14,14 @@ import Tab1 from './components/EMICalc';
    import DelimiterJsonTool from './components/DelimiterJsonTool';
       import JsonViewerSearchable from './components/JsonViewerSearchable';
 
+      import Extract from './components/Extract';
 
 
 
 const tabList = [
+
+          { key: 'Extract', title: 'Extract', component: <Extract /> },
+
 
         { key: 'JsonViewerSearchable', title: 'JsonViewerSearchable', component: <JsonViewerSearchable /> },
 
