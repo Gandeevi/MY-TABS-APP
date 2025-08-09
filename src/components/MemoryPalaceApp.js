@@ -132,7 +132,7 @@ const MemoryPalaceApp = () => {
             </Accordion.Header>
             <Accordion.Body>
               <div className="d-flex justify-content-end mb-2">
-                <OverlayTrigger overlay={<Tooltip>Add Room</Tooltip>}><Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}><Plus size={16} /></Button></OverlayTrigger>
+                <OverlayTrigger overlay={<Tooltip>Add Loci</Tooltip>}><Button variant="outline-primary" size="sm" className="me-1" onClick={() => openRoomModal(index)}><Plus size={16} /></Button></OverlayTrigger>
                 {/* <OverlayTrigger overlay={<Tooltip>Play Mode</Tooltip>}><Button variant="outline-success" size="sm" className="me-1" onClick={() => startPlayMode(index)}><Play size={16} /></Button></OverlayTrigger> */}
                 <OverlayTrigger overlay={<Tooltip>Edit Palace</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openModal(index)}><Pencil size={16} /></Button></OverlayTrigger>
                 <OverlayTrigger overlay={<Tooltip>Delete Palace</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deletePalace(index)}><Trash size={16} /></Button></OverlayTrigger>
@@ -143,8 +143,8 @@ const MemoryPalaceApp = () => {
                     <Accordion.Header>{room.name || `Room ${rIndex + 1}`}</Accordion.Header>
                     <Accordion.Body>
                       <div className="d-flex justify-content-end mb-2">
-                        <OverlayTrigger overlay={<Tooltip>Edit Room</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openRoomModal(index, rIndex)}><Pencil size={16} /></Button></OverlayTrigger>
-                        <OverlayTrigger overlay={<Tooltip>Delete Room</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deleteRoom(index, rIndex)}><Trash size={16} /></Button></OverlayTrigger>
+                        <OverlayTrigger overlay={<Tooltip>Edit Loci</Tooltip>}><Button variant="outline-info" size="sm" className="me-1" onClick={() => openRoomModal(index, rIndex)}><Pencil size={16} /></Button></OverlayTrigger>
+                        <OverlayTrigger overlay={<Tooltip>Delete Loci</Tooltip>}><Button variant="outline-danger" size="sm" onClick={() => deleteRoom(index, rIndex)}><Trash size={16} /></Button></OverlayTrigger>
                       </div>
                      <ImageLabeler
   initialImage={room.image}
@@ -189,11 +189,11 @@ const MemoryPalaceApp = () => {
 
       <Modal show={showRoomModal} onHide={() => setShowRoomModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>{editingRoomIndex !== null ? "Edit" : "Add"} Room</Modal.Title>
+          <Modal.Title>{editingRoomIndex !== null ? "Edit" : "Add"} Loci</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group>
-            <Form.Label>Room Name</Form.Label>
+            <Form.Label>Loci Name</Form.Label>
             <Form.Control
               type="text"
               value={roomName}
