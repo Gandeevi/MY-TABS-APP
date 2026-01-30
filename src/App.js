@@ -15,7 +15,7 @@ import Tab1 from './components/EMICalc';
       import JsonViewerSearchable from './components/JsonViewerSearchable';
 
       import Extract from './components/Extract';
-import BoxBreathing from './components/BoxBreathing';
+//import BoxBreathing from './components/BoxBreathing';
 
 
 
@@ -39,7 +39,7 @@ const tabList = [
 
             // { key: 'MemoryPalace', title: 'MemoryPalace', component: <MemoryPalaceApp /> },
 
-{ key: 'BoxBreathing', title: 'Box Breathing', component: <BoxBreathing /> },
+//{ key: 'BoxBreathing', title: 'Box Breathing', component: <BoxBreathing /> },
 
   { key: 'tab1', title: 'EMI calculator', component: <Tab1 /> },
   // { key: 'tab2', title: 'Events', component: <Tab2 /> },
