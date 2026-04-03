@@ -46,10 +46,10 @@ const tabList = [
 
 //{ key: 'BoxBreathing', title: 'Box Breathing', component: <BoxBreathing /> },
 
-  { key: 'tab1', title: 'EMI calculator', component: <Tab1 /> },
-  // { key: 'tab2', title: 'Events', component: <Tab2 /> },
-  { key: 'tab3', title: 'Essay Quiz', component: <Tab3 /> },
-    // { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
+  // { key: 'tab1', title: 'EMI calculator', component: <Tab1 /> },
+  // // { key: 'tab2', title: 'Events', component: <Tab2 /> },
+  // { key: 'tab3', title: 'Essay Quiz', component: <Tab3 /> },
+  //   // { key: 'tab4', title: 'Thoughts Bucket', component: <Tab4 /> },
   
     //       { key: 'RBirth', title: 'RBirth', component: <RBirth /> },
 
