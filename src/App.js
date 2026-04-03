@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Container, Nav, Tab } from 'react-bootstrap';
 
 import Tab1 from './components/EMICalc';
- import Tab2 from './components/Tab2';
- import Tab3 from './components/Tab3';
- import Tab4 from './components/Tab4';
+ // import Tab2 from './components/Tab2';
+ // import Tab3 from './components/Tab3';
+ // import Tab4 from './components/Tab4';
  import NTracker from './components/NTracker';
  import RBirth from './components/RBirth';
  import Utilities from './components/Utilities';
