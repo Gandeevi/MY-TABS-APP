@@ -8,6 +8,8 @@ import Tab1 from './components/EMICalc';
  import NTracker from './components/NTracker';
  import RBirth from './components/RBirth';
  import Utilities from './components/Utilities';
+import HabitPlanner from "./components/HabitPlanner";
+import HabitPlanner3d from "./components/HabitPlanner3d";
 
   import MemoryPalaceApp from './components/MemoryPalaceApp';
    import DaxJavaCrud from './components/DaxJavaCrud';
@@ -22,6 +24,9 @@ import Tab1 from './components/EMICalc';
 const tabList = [
 
           { key: 'Extract', title: 'Extract', component: <Extract /> },
+  { key: 'HabitPlanner', title: 'HabitPlanner', component: <HabitPlanner /> },
+
+ 		            { key: 'HabitPlanner3d', title: 'HabitPlanner3d', component: <HabitPlanner3d /> },
 
 
         { key: 'JsonViewerSearchable', title: 'JsonViewerSearchable', component: <JsonViewerSearchable /> },
